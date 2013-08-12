@@ -1,1 +1,1 @@
-It contains all the codes that I've made.
+Contains codes that i've practiced.
