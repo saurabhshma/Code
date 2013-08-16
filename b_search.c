@@ -43,7 +43,7 @@ int b_search(int A[], int n, int number)
 		{
 			return mid;
 		}
-	}while(first != (last));
+	}while(first != last);
 	
 	printf("Element not found\n");
 	exit(1);
