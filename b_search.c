@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int b_search(int A[],int n, int number);
+void b_search(int A[],int n, int number);
 
 int main()
 {
@@ -15,37 +15,35 @@ int main()
 	printf("Enter the number you want to search\n");
 		scanf("%d", &number);
 	
-	n = b_search(A, n, number);
-	printf("Number found at position %d\n", n + 1);
+	b_search(A, n, number);
 	return 0;	
 }
 
-int b_search(int A[], int n, int number)
+void b_search(int A[], int n, int number)
 {
 	int first = 0, last = n - 1;
-	int mid = (first + (last + 1)) / 2;
+	int mid = (first + last) / 2;
 	do
 	{
-	
-		if(A[mid] > number)
+		if(A[mid] == number)
 		{
-			last = mid;
-			mid = (first + (last + 1)) / 2;
-		}
-	
-		else if(A[mid] < number)
+			printf("Number found at position %d\n", mid + 1);
+			exit(1);
+		}	
+			
+		else if(A[mid] > number)
 		{
-			first = mid;
-			mid = (first + (last + 1)) / 2;
+			last = mid - 1;
+			mid = (first + (last)) / 2;
 		}
 	
 		else
 		{
-			return mid;
+			first = mid + 1;
+			mid = (first + (last)) / 2;
 		}
-	}while(first != last);
-	
-	printf("Element not found\n");
-	exit(1);
+	}while((last >= first) && (first <= last));
+
+	printf("Element not found!!!\n");
 }	
 
