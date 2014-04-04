@@ -126,7 +126,7 @@ void BFS()
 	scanf("%d", &s);
 	V[s - 1].colour = 'g';
 	enqueue(&V[s - 1]);
-	printf("Vertices discovered in BFS:\n");
+	display_queue();
 	while(start != NULL)
 	{
 		u = dequeue();
@@ -140,10 +140,11 @@ void BFS()
 			}
 			temp = temp->next;
 		}
+		display_queue();
 		u->colour = 'b';
 		if(u->colour == 'b')
 		{
-			printf("%d\n", u->val);
+			printf("Vertex discovered is:\n%d\n", u->val);
 		}
 	}
 	
