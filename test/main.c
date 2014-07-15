@@ -1,6 +1,12 @@
-#include "print.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include "reciprocal.hpp"
 
-void main()
+int main (int argc, char **argv)
 {
-	print();
+int i;
+i = atoi (argv[1]);
+printf ("The reciprocal of %d is %f\n", i, reciprocal (i));
+return 0;
 }
+
