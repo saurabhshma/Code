@@ -3,19 +3,19 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <string.h>
 
-
-int main()
+int main(int argv, char *argc[])
 {
 	int fd;
-	char a;
-	ssize_t n;
-	fd = open("./child_ps", O_RDWR);
+	mode_t mode = S_IRUSR | S_IWUSR;
+	fd = open(argc[1], O_RDWR | O_CREAT, mode);
+	char *data = argc[2];
 	if(fd == -1)
 	{
-		printf("Error\n");
+		perror("open");
 	}
-	n = read(fd, &a, sizeof(char));
-	printf("a = %c\nn = %d\n", a, n);
+	ssize_t length = strlen(data);
+	write(fd, argc[2], length);
 	return 0;
 }
