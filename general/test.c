@@ -1,9 +1,75 @@
 #include <stdio.h>
 
-#define scanf "SCAR"
+int mergesort(int a, int b, int A[], int B[]);
+int merge(int a, int b, int A[], int B[]);
+
+static count = 0;
 
 int main()
 {
-	printf(scanf, scanf);
+	int size, a = 0, b, i, k;
+
+	printf("Enter the size of array\n");
+	scanf("%d", &size); 
+	int A[size], B[size];
+	printf("Enter array\n");
+	for(i = 0; i < size; i++)
+		scanf("%d", &A[i]);
+	b = size - 1;
+	mergesort(a, b, A, B);
+	/*printf("Array after mergesort\n");
+	for(i = 0; i < size; i++)
+		printf("%d ", B[i]);*/
+	printf("inversions %d\n", count);
+//	printf("\n");
 	return 0;
+}
+
+int mergesort(int a, int b, int A[], int B[])
+{
+	int mid = (a + b) / 2;
+
+	if(a == b)
+		return A[a];
+	else
+	{
+		mergesort(a, mid, A, B);
+		mergesort((mid + 1), b, A, B);
+		merge(a, b, A, B);
+	}
+}
+
+int merge(int a, int b, int A[], int B[])
+{
+	int x = (b - a + 1) / 2;
+	int mid = (a + b) / 2;
+	int i = a, j = mid + 1, k;
+	for(k = a; k <= b; k++)
+	{	
+		if(i > mid)
+		{
+			B[k] = A[j];
+			j++;
+		}
+		else if(j > b)
+		{
+			B[k] = A[i];
+			i++;
+		}	
+		else if(A[i] < A[j])
+		{
+			B[k] = A[i];
+			i++;
+			x--;
+		}	
+		else
+		{
+			count += mid - i + 1;
+			B[k] = A[j];
+			j++;
+		}
+	}
+	
+	for(k = a; k <= b; k++)
+		A[k] = B[k];
 }

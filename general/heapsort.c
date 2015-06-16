@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 #define SIZE 5 
 
 int heapsize;
@@ -15,7 +16,7 @@ int main()
 {
 	int i;
 	heapsize = SIZE - 1;
-	printf("Enter start entering elements\n");
+	printf("Enter elements\n");
 	for(i = 0; i < SIZE; i++)
 	{
 		scanf("%d", &A[i]);
@@ -51,7 +52,7 @@ int right(int x)
 int parent(int x)
 {
 	int temp;
-	if(x % 2 == 0)
+	if(x % 2 != 0)
 	{
 		temp = (x - 1) / 2;
 	}
@@ -98,7 +99,7 @@ void maxheapify(int x)
 void buildheap()
 {
 	int temp, i;
-	if(heapsize % 2 == 0)
+	/*if(heapsize % 2 == 0)
 	{
 		temp = (heapsize - 1) / 2;
 	}
@@ -107,8 +108,9 @@ void buildheap()
 	{
 		temp = heapsize / 2;
 	}
-
-	for(i = temp; i >= 0; i--)
+	*/
+	temp = floor(SIZE / 2); 
+	for(i = temp - 1; i >= 0; i--)
 	{
 		maxheapify(i);
 	}

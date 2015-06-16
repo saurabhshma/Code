@@ -5,7 +5,7 @@ int merge(int a, int b, int A[], int B[]);
 
 int main()
 {
-	int size, a = 0, b, i;
+	int size, a = 0, b, i, k;
 
 	printf("Enter the size of array\n");
 	scanf("%d", &size); 
