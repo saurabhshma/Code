@@ -5,6 +5,7 @@ int mcm(int a, int b);
 void printsol(int i, int j);
 int P[7] = {30, 35, 15, 5, 10, 20, 25};
 int A[6][6], S[6][6];
+char X[6] = {'A', 'B', 'C', 'D', 'E', 'F'};
 
 int main()
 {
@@ -81,7 +82,7 @@ int mcm(int a, int b)
 void printsol(int i, int j)
 {
 	if(i == j)
-		printf("A%d", i);
+		printf("%c", X[i - 1]);
 	else
 	{
 		printf("(");
