@@ -1,22 +1,8 @@
-#include <stdio.h>
-
-/*int f(int a)
-{
-	printf("%d ", a++);
-	return(++a);
-}*/
-int *f(int a);
+#include<stdio.h>
 int main()
 {
-	int *i = f(1);
-	printf("\n");
-	return 0;
+int a[2][2] = {1, 2, 3, 4};
+int i, j;
+int **p = a;
+return 0;
 }
-
-int *f(int a)
-{
-	int x = 10;
-	printf("%d ", x);
-	return (&x);
-}
-
