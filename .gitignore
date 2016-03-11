@@ -1,5 +1,5 @@
-*.o
 a.out
 test.cpp
 test.c
-/home/shamma/code/CPP/test/
+*.o
+CPP/test/
