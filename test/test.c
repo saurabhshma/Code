@@ -1,12 +1,11 @@
 #include <stdio.h>
 
-main()
+#define A(x) #x = 10
+#define DINO_VERSION(type,var) type DINO_VERSION_#var = var
+
+int main()
 {
-	
-	int c;
-	while((c = getchar()) != EOF)
-	{	
-		putchar('\a');
-	}
-	printf("\n");
+	DINO_VERSION(int, 1);
+	printf("%d\n", DINO_VERSION_1);
+	return 0;
 }
