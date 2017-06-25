@@ -1,33 +1,33 @@
+//http://practice.geeksforgeeks.org/problems/longest-increasing-subsequence/0
+
 #include <bits/stdc++.h>
 
 using namespace std;
 
-int LIS(vector<int> &A, int n)
+int lis[1001];
+
+int LIS(int A[], int n)
 {
-	vector<int> lis(n, -1);
-	if(n == 1)
+	if(lis[n] == -1)
 	{
-		if(lis[n - 1] == -1)
-			lis[n - 1] = 1;
-		return lis[n - 1];
-	}
-	else
-	{
-		int max = 1;
-		for(int i = n - 2; i >= 0; i--)
+		if(n == 1)
+			lis[n] = 1;
+		else
 		{
-			int temp;
-			if(A[i] < A[n - 1])
+			int max = 1, temp;
+			for(int i = n - 2; i >= 0; i--)
 			{
-				if(lis[i] == -1)
-					lis[i] = LIS(A, i + 1);
-				if((temp = 1 + lis[i]) > max)
-					max = temp;
+				if(A[i] < A[n - 1])
+				{
+					temp = LIS(A, i + 1);
+					if((1 + temp) > max)
+						max = 1 + temp;
+				}
 			}
+			lis[n] = max; 
 		}
-		lis[n - 1] = max;
-		return lis[n - 1];
 	}
+	return lis[n];
 }
 
 int main()
@@ -37,14 +37,14 @@ int main()
 	for(int i = 0; i < t; i++)
 	{
 		cin >> n;
-		vector<int>A(n);
-		//vector<int>lis(n - 1, -1);
+		int A[n];
 		for(int j = 0; j < n; j++)
-		{
-			cin >> temp; 
-			A[j] = temp;
-		}
-		cout << LIS(A, n) << "\n";
+			cin >> A[j];
+		for(int j = 0; j <= n; j++)
+			lis[j] = -1;
+		for(int j = 1; j <= n; j++)
+			lis[j] = LIS(A, j);
+		cout << *max_element(lis, lis + n + 1) << "\n";
 	}
 	return 0;
 }
